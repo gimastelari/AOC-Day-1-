@@ -1,0 +1,39 @@
+class SimpleFileReader // class header 
+{
+    private String fileName; // filename reference declared for datatype String 
+    private FileReader fr;//FileReader object referenced by name "fr"
+    private Scanner fs; // scanner object referenced by name "fs"
+    public SimpleFileReader(String filename) /* constructor method created for the class which passes in a String 
+    argument references as "filename" */ 
+    {
+        try // defines a block of code that might be exceptions of instructions when code is running 
+        {
+            this.fileName = filename; // setting local variable equal to current instance variable fileName
+            fr = new FileReader(this.fileName); /* initiates fr as new FileReader object that passes in 
+            current instance of the fileName instance variable */ 
+            fs = new Scanner(fr); // initiated fs as new Scanner object passing in the FileReader object as an argument
+        }
+        catch (FileNotFoundException e) // code to be executed in case the exceptions in try block occur 
+        {
+            e.printStackTrace(); // local varaible with method printStackTrace called on it
+        }
+    }
+    
+    public String getContents() // public accessor method with String return type passing no arguments 
+    {
+        String contents = ""; // local variable named contents initiated to value of ""
+
+        if(fs == null) // if file scanner value passed in is null 
+            return ""; // return "" aka nothing 
+
+        while(this.fs.hasNext()) /* while this is happening the current instance file scanner will has hasNext() 
+        method called so that the next token or word read is picked up by the file scanner which is processed by 
+        the filereader */ 
+        {
+            contents = contents.concat(fs.nextLine()); /* the content is concated with the contents instance 
+            with the value of the fs object pasing fr object to read the entire file */ 
+            contents = contents.concat("\n"); // the line breaks are also included in this reading 
+        }
+        return contents; // returns the content retrieved from the file scanner and file reader 
+    }
+} 
