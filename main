@@ -1,0 +1,13 @@
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		SimpleFileReader sfr = new SimpleFileReader("calibrationDocument.txt"); /* SimpleFileReader object created passing "calibrationDocument.txt" 
+        as an argument*/ 
+        String filecontents = sfr.getContents(); /* sfr object gets method "getContents()" called on it which means 
+        if sfr object is null meaning it contains no arguments then to return the value "" while scanner is taking the next 
+        line of text through the file reader and then returning the content reader through the scanner and file reader*/ 
+        // System.out.print(filecontents);  
+	}
+}
+
